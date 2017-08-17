@@ -1,0 +1,4 @@
+mybatis:
+  mapperLocations: classpath:mybatis/mapper/*.xml
+  typeAliasesPackage: com.quickcanteen.model
+  configLocation: classpath:mybatis-config.xml
