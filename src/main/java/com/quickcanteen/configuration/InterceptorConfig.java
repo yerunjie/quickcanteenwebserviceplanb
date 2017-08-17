@@ -1,4 +1,4 @@
-package com.fitibo.aotearoa.configuration;
+package com.quickcanteen.configuration;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

@@ -1,4 +1,4 @@
-package com.fitibo.aotearoa.configuration;
+package com.quickcanteen.configuration;
 
 /**
  * Created by zhouqianhao on 11/03/2017.

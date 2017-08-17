@@ -1,10 +1,9 @@
-package com.quickcanteen;
+package com.quickcanteen.controller;
 
-import com.fitibo.aotearoa.dto.Token;
 
-/**
- * Created by qianhao.zhou on 8/18/16.
- */
+import com.quickcanteen.dto.Token;
+
+
 public abstract class AuthenticationRequiredController {
 
     private ThreadLocal<Token> token = new ThreadLocal<>();

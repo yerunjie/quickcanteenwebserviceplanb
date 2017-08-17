@@ -1,10 +1,6 @@
-package com.fitibo.aotearoa.configuration;
+package com.quickcanteen.configuration;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 /**
  * Created by xiaozou on 8/17/16.

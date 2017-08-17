@@ -1,27 +1,23 @@
-package com.fitibo.aotearoa.interceptor;
+package com.quickcanteen.interceptor;
+
 
 import com.google.common.collect.Lists;
-
-import com.fitibo.aotearoa.annotation.Authentication;
-import com.fitibo.aotearoa.controller.AuthenticationRequiredController;
-import com.fitibo.aotearoa.dto.Token;
-import com.fitibo.aotearoa.service.TokenService;
-
+import com.quickcanteen.annotation.Authentication;
+import com.quickcanteen.controller.AuthenticationRequiredController;
+import com.quickcanteen.dto.Token;
+import com.quickcanteen.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import java.io.IOException;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
-/**
- * Created by qianhao.zhou on 8/9/16.
- */
+
 @Service("authenticationInterceptor")
 public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 

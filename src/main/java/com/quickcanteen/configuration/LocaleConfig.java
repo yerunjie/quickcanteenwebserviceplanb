@@ -1,4 +1,4 @@
-package com.fitibo.aotearoa.configuration;
+package com.quickcanteen.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
