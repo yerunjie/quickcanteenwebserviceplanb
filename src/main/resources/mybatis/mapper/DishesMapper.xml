@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.quickcanteen.mapper.DishesMapper" >
+  <resultMap id="BaseResultMap" type="com.quickcanteen.model.Dishes" >
+    <id column="dishes_id" property="dishesId" jdbcType="INTEGER" />
+    <result column="company_id" property="companyId" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="diagrammatic_sketch_address" property="diagrammaticSketchAddress" jdbcType="VARCHAR" />
+    <result column="dishes_name" property="dishesName" jdbcType="VARCHAR" />
+    <result column="praise_num" property="praiseNum" jdbcType="INTEGER" />
+    <result column="comment_num" property="commentNum" jdbcType="INTEGER" />
+    <result column="collect_num" property="collectNum" jdbcType="INTEGER" />
+    <result column="publish_time" property="publishTime" jdbcType="TIMESTAMP" />
+    <result column="rating" property="rating" jdbcType="DOUBLE" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.quickcanteen.model.Dishes" extends="BaseResultMap" >
+    <result column="dishes_introduce" property="dishesIntroduce" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    dishes_id, company_id, price, diagrammatic_sketch_address, dishes_name, praise_num, 
+    comment_num, collect_num, publish_time, rating, update_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    dishes_introduce
+  </sql>
+  <insert id="insertSelective" parameterType="com.quickcanteen.model.Dishes" >
+    insert into dishes
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dishesId != null" >
+        dishes_id,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="diagrammaticSketchAddress != null" >
+        diagrammatic_sketch_address,
+      </if>
+      <if test="dishesName != null" >
+        dishes_name,
+      </if>
+      <if test="praiseNum != null" >
+        praise_num,
+      </if>
+      <if test="commentNum != null" >
+        comment_num,
+      </if>
+      <if test="collectNum != null" >
+        collect_num,
+      </if>
+      <if test="publishTime != null" >
+        publish_time,
+      </if>
+      <if test="rating != null" >
+        rating,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="dishesIntroduce != null" >
+        dishes_introduce,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dishesId != null" >
+        #{dishesId,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="diagrammaticSketchAddress != null" >
+        #{diagrammaticSketchAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dishesName != null" >
+        #{dishesName,jdbcType=VARCHAR},
+      </if>
+      <if test="praiseNum != null" >
+        #{praiseNum,jdbcType=INTEGER},
+      </if>
+      <if test="commentNum != null" >
+        #{commentNum,jdbcType=INTEGER},
+      </if>
+      <if test="collectNum != null" >
+        #{collectNum,jdbcType=INTEGER},
+      </if>
+      <if test="publishTime != null" >
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rating != null" >
+        #{rating,jdbcType=DOUBLE},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dishesIntroduce != null" >
+        #{dishesIntroduce,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.quickcanteen.model.Dishes" >
+    update dishes
+    <set >
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="diagrammaticSketchAddress != null" >
+        diagrammatic_sketch_address = #{diagrammaticSketchAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dishesName != null" >
+        dishes_name = #{dishesName,jdbcType=VARCHAR},
+      </if>
+      <if test="praiseNum != null" >
+        praise_num = #{praiseNum,jdbcType=INTEGER},
+      </if>
+      <if test="commentNum != null" >
+        comment_num = #{commentNum,jdbcType=INTEGER},
+      </if>
+      <if test="collectNum != null" >
+        collect_num = #{collectNum,jdbcType=INTEGER},
+      </if>
+      <if test="publishTime != null" >
+        publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rating != null" >
+        rating = #{rating,jdbcType=DOUBLE},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dishesIntroduce != null" >
+        dishes_introduce = #{dishesIntroduce,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where dishes_id = #{dishesId,jdbcType=INTEGER}
+  </update>
+</mapper>
