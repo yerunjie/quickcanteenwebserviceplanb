@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.quickcanteen.mapper.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.quickcanteen.model.UserInfo">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="account_number" jdbcType="VARCHAR" property="accountNumber" />
+    <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
+    <result column="head_portrait" jdbcType="VARCHAR" property="headPortrait" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="entrance_year" jdbcType="DATE" property="entranceYear" />
+    <result column="college_name" jdbcType="VARCHAR" property="collegeName" />
+    <result column="university_name" jdbcType="VARCHAR" property="universityName" />
+    <result column="is_admin" jdbcType="INTEGER" property="isAdmin" />
+    <result column="points" jdbcType="INTEGER" property="points" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, account_number, user_password, head_portrait, nick_name, real_name, telephone, 
+    entrance_year, college_name, university_name, is_admin, points, update_time
+  </sql>
+  <insert id="insertSelective" parameterType="com.quickcanteen.model.UserInfo">
+    insert into user_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="accountNumber != null">
+        account_number,
+      </if>
+      <if test="userPassword != null">
+        user_password,
+      </if>
+      <if test="headPortrait != null">
+        head_portrait,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="realName != null">
+        real_name,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="entranceYear != null">
+        entrance_year,
+      </if>
+      <if test="collegeName != null">
+        college_name,
+      </if>
+      <if test="universityName != null">
+        university_name,
+      </if>
+      <if test="isAdmin != null">
+        is_admin,
+      </if>
+      <if test="points != null">
+        points,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="accountNumber != null">
+        #{accountNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null">
+        #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="headPortrait != null">
+        #{headPortrait,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="entranceYear != null">
+        #{entranceYear,jdbcType=DATE},
+      </if>
+      <if test="collegeName != null">
+        #{collegeName,jdbcType=VARCHAR},
+      </if>
+      <if test="universityName != null">
+        #{universityName,jdbcType=VARCHAR},
+      </if>
+      <if test="isAdmin != null">
+        #{isAdmin,jdbcType=INTEGER},
+      </if>
+      <if test="points != null">
+        #{points,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.quickcanteen.model.UserInfo">
+    update user_info
+    <set>
+      <if test="accountNumber != null">
+        account_number = #{accountNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null">
+        user_password = #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="headPortrait != null">
+        head_portrait = #{headPortrait,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="entranceYear != null">
+        entrance_year = #{entranceYear,jdbcType=DATE},
+      </if>
+      <if test="collegeName != null">
+        college_name = #{collegeName,jdbcType=VARCHAR},
+      </if>
+      <if test="universityName != null">
+        university_name = #{universityName,jdbcType=VARCHAR},
+      </if>
+      <if test="isAdmin != null">
+        is_admin = #{isAdmin,jdbcType=INTEGER},
+      </if>
+      <if test="points != null">
+        points = #{points,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.quickcanteen.model.UserInfo">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="account_number" jdbcType="VARCHAR" property="accountNumber" />
+    <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
+    <result column="head_portrait" jdbcType="VARCHAR" property="headPortrait" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="entrance_year" jdbcType="DATE" property="entranceYear" />
+    <result column="college_name" jdbcType="VARCHAR" property="collegeName" />
+    <result column="university_name" jdbcType="VARCHAR" property="universityName" />
+    <result column="is_admin" jdbcType="INTEGER" property="isAdmin" />
+    <result column="points" jdbcType="INTEGER" property="points" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, account_number, user_password, head_portrait, nick_name, real_name, telephone, 
+    entrance_year, college_name, university_name, is_admin, points, update_time
+  </sql>
+  <insert id="insertSelective" parameterType="com.quickcanteen.model.UserInfo">
+    insert into user_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="accountNumber != null">
+        account_number,
+      </if>
+      <if test="userPassword != null">
+        user_password,
+      </if>
+      <if test="headPortrait != null">
+        head_portrait,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="realName != null">
+        real_name,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="entranceYear != null">
+        entrance_year,
+      </if>
+      <if test="collegeName != null">
+        college_name,
+      </if>
+      <if test="universityName != null">
+        university_name,
+      </if>
+      <if test="isAdmin != null">
+        is_admin,
+      </if>
+      <if test="points != null">
+        points,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="accountNumber != null">
+        #{accountNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null">
+        #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="headPortrait != null">
+        #{headPortrait,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="entranceYear != null">
+        #{entranceYear,jdbcType=DATE},
+      </if>
+      <if test="collegeName != null">
+        #{collegeName,jdbcType=VARCHAR},
+      </if>
+      <if test="universityName != null">
+        #{universityName,jdbcType=VARCHAR},
+      </if>
+      <if test="isAdmin != null">
+        #{isAdmin,jdbcType=INTEGER},
+      </if>
+      <if test="points != null">
+        #{points,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.quickcanteen.model.UserInfo">
+    update user_info
+    <set>
+      <if test="accountNumber != null">
+        account_number = #{accountNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null">
+        user_password = #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="headPortrait != null">
+        head_portrait = #{headPortrait,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="entranceYear != null">
+        entrance_year = #{entranceYear,jdbcType=DATE},
+      </if>
+      <if test="collegeName != null">
+        college_name = #{collegeName,jdbcType=VARCHAR},
+      </if>
+      <if test="universityName != null">
+        university_name = #{universityName,jdbcType=VARCHAR},
+      </if>
+      <if test="isAdmin != null">
+        is_admin = #{isAdmin,jdbcType=INTEGER},
+      </if>
+      <if test="points != null">
+        points = #{points,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>
