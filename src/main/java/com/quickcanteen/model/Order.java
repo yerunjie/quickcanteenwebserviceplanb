@@ -2,14 +2,14 @@ package com.quickcanteen.model;
 
 import java.util.Date;
 
-public class Orders {
-    private Integer ordersId;
+public class Order {
+    private Integer orderId;
 
     private Integer userId;
 
     private Integer companyId;
 
-    private Integer ordersState;
+    private Integer orderState;
 
     private Date publishTime;
 
@@ -21,12 +21,12 @@ public class Orders {
 
     private Date updateTime;
 
-    public Integer getOrdersId() {
-        return ordersId;
+    public Integer getOrderId() {
+        return orderId;
     }
 
-    public void setOrdersId(Integer ordersId) {
-        this.ordersId = ordersId;
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
     }
 
     public Integer getUserId() {
@@ -45,12 +45,12 @@ public class Orders {
         this.companyId = companyId;
     }
 
-    public Integer getOrdersState() {
-        return ordersState;
+    public Integer getOrderState() {
+        return orderState;
     }
 
-    public void setOrdersState(Integer ordersState) {
-        this.ordersState = ordersState;
+    public void setOrderState(Integer orderState) {
+        this.orderState = orderState;
     }
 
     public Date getPublishTime() {

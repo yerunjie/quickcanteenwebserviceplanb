@@ -7,9 +7,7 @@ import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 
 import java.util.Locale;
 
-/**
- * Created by qianhao.zhou on 10/11/2016.
- */
+
 @Configuration
 public class LocaleConfig {
     @Bean

@@ -2,7 +2,7 @@ package com.quickcanteen.model;
 
 import java.util.Date;
 
-public class OrdersDishes extends OrdersDishesKey {
+public class OrderDishes extends OrderDishesKey {
     private Integer count;
 
     private Date updateTime;

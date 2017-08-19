@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@MapperScan("com.fitibo.aotearoa.mapper")
+@MapperScan("com.quickcanteen.mapper")
 @EnableTransactionManagement
 public class PersistenceConfig {
 

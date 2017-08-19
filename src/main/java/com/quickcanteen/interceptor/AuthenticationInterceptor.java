@@ -4,8 +4,10 @@ package com.quickcanteen.interceptor;
 import com.google.common.collect.Lists;
 import com.quickcanteen.annotation.Authentication;
 import com.quickcanteen.controller.AuthenticationRequiredController;
+import com.quickcanteen.dto.BaseJson;
 import com.quickcanteen.dto.Token;
 import com.quickcanteen.service.TokenService;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
@@ -58,8 +60,14 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
         if (controller.getClass().isAnnotationPresent(RestController.class) ||
                 controller.getClass().getSuperclass().isAnnotationPresent(RestController.class)) {
             httpServletResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            BaseJson baseJson = new BaseJson();
+            baseJson.setReturnCode("E.1");
+            baseJson.setErrorMessage("没有权限");
+            JSONObject jsonObject = JSONObject.fromObject(baseJson);
+            httpServletResponse.setCharacterEncoding("UTF8");
+            httpServletResponse.getWriter().println(jsonObject.toString());
         } else {
-            httpServletResponse.sendRedirect("/signin?redirectUrl=" + httpServletRequest.getRequestURI());
+            //httpServletResponse.sendRedirect("/signin?redirectUrl=" + httpServletRequest.getRequestURI());
         }
     }
 

@@ -1,16 +1,16 @@
 package com.quickcanteen.model;
 
-public class OrdersDishesKey {
-    private Integer ordersId;
+public class OrderDishesKey {
+    private Integer orderId;
 
     private Integer dishesId;
 
-    public Integer getOrdersId() {
-        return ordersId;
+    public Integer getOrderId() {
+        return orderId;
     }
 
-    public void setOrdersId(Integer ordersId) {
-        this.ordersId = ordersId;
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
     }
 
     public Integer getDishesId() {

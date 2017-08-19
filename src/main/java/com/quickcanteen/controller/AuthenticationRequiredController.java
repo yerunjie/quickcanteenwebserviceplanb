@@ -15,4 +15,5 @@ public abstract class AuthenticationRequiredController {
     public Token getToken() {
         return this.token.get();
     }
+
 }

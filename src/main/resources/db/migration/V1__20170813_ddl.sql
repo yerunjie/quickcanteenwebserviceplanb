@@ -100,33 +100,33 @@ CREATE TABLE `dishes_type` (
 -- ----------------------------
 -- Table structure for orders
 -- ----------------------------
-DROP TABLE IF EXISTS `orders`;
-CREATE TABLE `orders` (
-  `orders_id` int(11) NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `order`;
+CREATE TABLE `order` (
+  `order_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `company_id` int(11) NOT NULL,
-  `orders_state` int(11) NOT NULL,
+  `order_state` int(11) NOT NULL,
   `publish_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `complete_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `total_price` double NOT NULL,
   `timeslot_id` int(11) DEFAULT NULL,
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`orders_id`),
+  PRIMARY KEY (`order_id`),
   KEY `company_id` (`company_id`),
   KEY `user_id` (`user_id`),
   KEY `timeslot_id` (`timeslot_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for orders_dishes
 -- ----------------------------
 DROP TABLE IF EXISTS `orders_dishes`;
-CREATE TABLE `orders_dishes` (
-  `orders_id` int(11) NOT NULL,
+CREATE TABLE `order_dishes` (
+  `order_id` int(11) NOT NULL,
   `dishes_id` int(11) NOT NULL,
   `count` int(11) NOT NULL,
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`orders_id`,`dishes_id`),
+  PRIMARY KEY (`order_id`,`dishes_id`),
   KEY `dishes_id` (`dishes_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -199,5 +199,6 @@ CREATE TABLE `user_info` (
   `is_admin` int(11) DEFAULT 0,
   `points` int(11) DEFAULT 0,
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`user_id`),
+  UNIQUE INDEX (`account_number`) USING HASH
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

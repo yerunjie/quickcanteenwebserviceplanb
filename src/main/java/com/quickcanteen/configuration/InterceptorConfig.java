@@ -8,9 +8,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-/**
- * Created by qianhao.zhou on 8/9/16.
- */
+
 @Configuration
 public class InterceptorConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
