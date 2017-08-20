@@ -1,15 +1,11 @@
 package com.quickcanteen.model;
 
-import java.util.Date;
-
 public class UserComment {
     private Integer commentId;
 
     private Integer commenterId;
 
     private Double rating;
-
-    private Date updateTime;
 
     private String commentContent;
 
@@ -35,14 +31,6 @@ public class UserComment {
 
     public void setRating(Double rating) {
         this.rating = rating;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
     }
 
     public String getCommentContent() {

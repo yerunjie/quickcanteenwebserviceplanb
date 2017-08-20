@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
+
 public interface TypeMapper {
     @Delete({
         "delete from type",
@@ -16,9 +18,9 @@ public interface TypeMapper {
 
     @Insert({
         "insert into type (type_id, type_name, ",
-        "company_id, update_time)",
+        "company_id)",
         "values (#{typeId,jdbcType=INTEGER}, #{typeName,jdbcType=VARCHAR}, ",
-        "#{companyId,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP})"
+        "#{companyId,jdbcType=INTEGER})"
     })
     int insert(Type record);
 
@@ -26,7 +28,7 @@ public interface TypeMapper {
 
     @Select({
         "select",
-        "type_id, type_name, company_id, update_time",
+        "type_id, type_name, company_id",
         "from type",
         "where type_id = #{typeId,jdbcType=INTEGER}"
     })
@@ -38,9 +40,17 @@ public interface TypeMapper {
     @Update({
         "update type",
         "set type_name = #{typeName,jdbcType=VARCHAR},",
-          "company_id = #{companyId,jdbcType=INTEGER},",
-          "update_time = #{updateTime,jdbcType=TIMESTAMP}",
+          "company_id = #{companyId,jdbcType=INTEGER}",
         "where type_id = #{typeId,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Type record);
+
+    @Select({
+            "select",
+            "type_id, type_name, company_id",
+            "from type",
+            "where company_id = #{companyId,jdbcType=INTEGER}"
+    })
+    @ResultMap("BaseResultMap")
+    List<Type> selectByCompangyId(Integer companyId);
 }

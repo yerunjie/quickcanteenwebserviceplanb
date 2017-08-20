@@ -18,9 +18,9 @@ public interface OrderDishesMapper {
 
     @Insert({
         "insert into order_dishes (order_id, dishes_id, ",
-        "count, update_time)",
+        "count)",
         "values (#{orderId,jdbcType=INTEGER}, #{dishesId,jdbcType=INTEGER}, ",
-        "#{count,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP})"
+        "#{count,jdbcType=INTEGER})"
     })
     int insert(OrderDishes record);
 
@@ -28,7 +28,7 @@ public interface OrderDishesMapper {
 
     @Select({
         "select",
-        "order_id, dishes_id, count, update_time",
+        "order_id, dishes_id, count",
         "from order_dishes",
         "where order_id = #{orderId,jdbcType=INTEGER}",
           "and dishes_id = #{dishesId,jdbcType=INTEGER}"
@@ -40,8 +40,7 @@ public interface OrderDishesMapper {
 
     @Update({
         "update order_dishes",
-        "set count = #{count,jdbcType=INTEGER},",
-          "update_time = #{updateTime,jdbcType=TIMESTAMP}",
+        "set count = #{count,jdbcType=INTEGER}",
         "where order_id = #{orderId,jdbcType=INTEGER}",
           "and dishes_id = #{dishesId,jdbcType=INTEGER}"
     })

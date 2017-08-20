@@ -3,19 +3,18 @@ package com.quickcanteen.constants;
 
 public enum OrderStatus {
 
-    NEW(10, "新建", "New"),
-    PENDING(20, "待确认", "Pending"),
-    FULL(30, "已满", "Full"),
-    CONFIRMED(40, "已确认", "Confirmed"),
-    MODIFYING(50, "修改中", "Modified"),
-    CANCELLED(60, "取消", "Cancelled"),
-    CLOSED(90, "已关闭", "Closed");
+    NEW(10, "新建"),
+    NOT_PAID(20, "待支付"),
+    PREPARING(30, "准备中"),
+    PEND_TO_TAKE(40, "待取餐"),
+    DISTRIBUTING(50, "待配送"),
+    CANCELLED(60, "取消"),
+    CLOSED(90, "被商家取消");
 
 
-    OrderStatus(int value, String desc, String descEn) {
+    OrderStatus(int value, String desc) {
         this.value = value;
         this.desc = desc;
-        this.descEn = descEn;
     }
 
     public int getValue() {
@@ -26,9 +25,6 @@ public enum OrderStatus {
         return desc;
     }
 
-    public String getDescEn() {
-        return descEn;
-    }
 
     public static OrderStatus valueOf(int value) {
         for (OrderStatus orderStatus : OrderStatus.values()) {
@@ -41,6 +37,5 @@ public enum OrderStatus {
 
     private final int value;
     private final String desc;
-    private final String descEn;
 
 }

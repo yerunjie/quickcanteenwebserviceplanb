@@ -1,15 +1,11 @@
 package com.quickcanteen.model;
 
-import java.util.Date;
-
 public class CompanyTimeSlot extends CompanyTimeSlotKey {
     private Integer peopleNumber;
 
     private Integer maxPeopleNumber;
 
     private Integer busyState;
-
-    private Date updateTime;
 
     public Integer getPeopleNumber() {
         return peopleNumber;
@@ -33,13 +29,5 @@ public class CompanyTimeSlot extends CompanyTimeSlotKey {
 
     public void setBusyState(Integer busyState) {
         this.busyState = busyState;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
     }
 }

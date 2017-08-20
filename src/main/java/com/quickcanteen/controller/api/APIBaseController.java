@@ -9,18 +9,26 @@ import com.quickcanteen.dto.BaseJson;
 public class APIBaseController extends AuthenticationRequiredController {
     private static final String RESOURCE_NOT_FOUND = "没有找到资源";
     private static final String NOT_AUTHORIZED = "没有权限";
+    private static final String WRONG_PARAM = "参数错误";
 
-    private BaseJson getUnauthorizedResult() {
+    protected BaseJson getUnauthorizedResult() {
         BaseJson baseJson = new BaseJson();
         baseJson.setReturnCode("E.1");
         baseJson.setErrorMessage(NOT_AUTHORIZED);
         return baseJson;
     }
 
-    private BaseJson getResourceNotFoundResult() {
+    protected BaseJson getResourceNotFoundResult() {
         BaseJson baseJson = new BaseJson();
         baseJson.setReturnCode("E.2");
         baseJson.setErrorMessage(RESOURCE_NOT_FOUND);
+        return baseJson;
+    }
+
+    protected BaseJson getWrongParamResult() {
+        BaseJson baseJson = new BaseJson();
+        baseJson.setReturnCode("E.3");
+        baseJson.setErrorMessage(WRONG_PARAM);
         return baseJson;
     }
 }

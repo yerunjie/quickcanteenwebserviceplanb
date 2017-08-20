@@ -9,22 +9,20 @@ import org.apache.ibatis.annotations.Update;
 
 public interface OrderMapper {
     @Delete({
-        "delete from order",
+        "delete from `order`",
         "where order_id = #{orderId,jdbcType=INTEGER}"
     })
     int deleteByPrimaryKey(Integer orderId);
 
     @Insert({
-        "insert into order (order_id, user_id, ",
+        "insert into `order` (order_id, user_id, ",
         "company_id, order_state, ",
         "publish_time, complete_time, ",
-        "total_price, timeslot_id, ",
-        "update_time)",
+        "total_price, timeslot_id)",
         "values (#{orderId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, ",
         "#{companyId,jdbcType=INTEGER}, #{orderState,jdbcType=INTEGER}, ",
         "#{publishTime,jdbcType=TIMESTAMP}, #{completeTime,jdbcType=TIMESTAMP}, ",
-        "#{totalPrice,jdbcType=DOUBLE}, #{timeslotId,jdbcType=INTEGER}, ",
-        "#{updateTime,jdbcType=TIMESTAMP})"
+        "#{totalPrice,jdbcType=DOUBLE}, #{timeslotId,jdbcType=INTEGER})"
     })
     int insert(Order record);
 
@@ -33,8 +31,8 @@ public interface OrderMapper {
     @Select({
         "select",
         "order_id, user_id, company_id, order_state, publish_time, complete_time, total_price, ",
-        "timeslot_id, update_time",
-        "from order",
+        "timeslot_id",
+        "from `order`",
         "where order_id = #{orderId,jdbcType=INTEGER}"
     })
     @ResultMap("BaseResultMap")
@@ -43,15 +41,14 @@ public interface OrderMapper {
     int updateByPrimaryKeySelective(Order record);
 
     @Update({
-        "update order",
+        "update `order`",
         "set user_id = #{userId,jdbcType=INTEGER},",
           "company_id = #{companyId,jdbcType=INTEGER},",
           "order_state = #{orderState,jdbcType=INTEGER},",
           "publish_time = #{publishTime,jdbcType=TIMESTAMP},",
           "complete_time = #{completeTime,jdbcType=TIMESTAMP},",
           "total_price = #{totalPrice,jdbcType=DOUBLE},",
-          "timeslot_id = #{timeslotId,jdbcType=INTEGER},",
-          "update_time = #{updateTime,jdbcType=TIMESTAMP}",
+          "timeslot_id = #{timeslotId,jdbcType=INTEGER}",
         "where order_id = #{orderId,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Order record);

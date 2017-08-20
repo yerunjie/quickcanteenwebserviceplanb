@@ -19,10 +19,10 @@ public interface CompanyTimeSlotMapper {
     @Insert({
         "insert into company_time_slot (company_id, time_slot_id, ",
         "people_number, max_people_number, ",
-        "busy_state, update_time)",
+        "busy_state)",
         "values (#{companyId,jdbcType=INTEGER}, #{timeSlotId,jdbcType=INTEGER}, ",
         "#{peopleNumber,jdbcType=INTEGER}, #{maxPeopleNumber,jdbcType=INTEGER}, ",
-        "#{busyState,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP})"
+        "#{busyState,jdbcType=INTEGER})"
     })
     int insert(CompanyTimeSlot record);
 
@@ -30,7 +30,7 @@ public interface CompanyTimeSlotMapper {
 
     @Select({
         "select",
-        "company_id, time_slot_id, people_number, max_people_number, busy_state, update_time",
+        "company_id, time_slot_id, people_number, max_people_number, busy_state",
         "from company_time_slot",
         "where company_id = #{companyId,jdbcType=INTEGER}",
           "and time_slot_id = #{timeSlotId,jdbcType=INTEGER}"
@@ -44,8 +44,7 @@ public interface CompanyTimeSlotMapper {
         "update company_time_slot",
         "set people_number = #{peopleNumber,jdbcType=INTEGER},",
           "max_people_number = #{maxPeopleNumber,jdbcType=INTEGER},",
-          "busy_state = #{busyState,jdbcType=INTEGER},",
-          "update_time = #{updateTime,jdbcType=TIMESTAMP}",
+          "busy_state = #{busyState,jdbcType=INTEGER}",
         "where company_id = #{companyId,jdbcType=INTEGER}",
           "and time_slot_id = #{timeSlotId,jdbcType=INTEGER}"
     })

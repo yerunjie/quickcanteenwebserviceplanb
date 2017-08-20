@@ -4,6 +4,8 @@ import com.quickcanteen.annotation.Authentication;
 import com.quickcanteen.dto.BaseBean;
 import com.quickcanteen.dto.BaseJson;
 import com.quickcanteen.dto.Role;
+import com.quickcanteen.mapper.UserInfoMapper;
+import com.quickcanteen.model.UserInfo;
 import com.quickcanteen.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,12 +46,23 @@ public class UserController extends APIBaseController {
     }
 
     @RequestMapping(value = "/getUserInfoByUserID")
-    @Authentication(Role.User)
+    @Authentication({Role.User, Role.Admin})
     public BaseJson getUserInfoByUserID(@RequestParam("userID") int userID) {
         BaseJson baseJson = new BaseJson();
-        if (getToken().getId() == userID) {
-            UserInfo userInfo = userInfoMapper.selectByPrimaryKey(userID);
-            baseJson.setObj(userInfo);
+        UserInfo userInfo = userInfoMapper.selectByPrimaryKey(userID);
+        switch (getToken().getRole()) {
+            case Admin:
+                baseJson.setObj(userInfo);
+                break;
+            case User:
+                if (getToken().getId() == userID) {
+                    baseJson.setObj(userInfo);
+                } else {
+                    return getUnauthorizedResult();
+                }
+                break;
+            default:
+                return getUnauthorizedResult();
         }
         return baseJson;
     }

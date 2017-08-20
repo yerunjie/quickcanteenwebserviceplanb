@@ -1,29 +1,27 @@
-package com.quickcanteen.model;
+package com.quickcanteen.dto;
 
 import java.util.Date;
 
-public class Dishes {
+/**
+ * Created by 11022 on 2017/8/20.
+ */
+public class DishesBean {
     private Integer dishesId;
-
     private Integer companyId;
-
     private Double price;
-
     private String diagrammaticSketchAddress;
-
     private String dishesName;
-
     private Integer praiseNum;
-
     private Integer commentNum;
-
     private Integer collectNum;
-
     private Date publishTime;
-
     private Double rating;
-
     private String dishesIntroduce;
+    private Integer count;
+
+    public DishesBean() {
+        this.count = 0;
+    }
 
     public Integer getDishesId() {
         return dishesId;
@@ -54,7 +52,7 @@ public class Dishes {
     }
 
     public void setDiagrammaticSketchAddress(String diagrammaticSketchAddress) {
-        this.diagrammaticSketchAddress = diagrammaticSketchAddress == null ? null : diagrammaticSketchAddress.trim();
+        this.diagrammaticSketchAddress = diagrammaticSketchAddress;
     }
 
     public String getDishesName() {
@@ -62,7 +60,15 @@ public class Dishes {
     }
 
     public void setDishesName(String dishesName) {
-        this.dishesName = dishesName == null ? null : dishesName.trim();
+        this.dishesName = dishesName;
+    }
+
+    public String getDishesIntroduce() {
+        return dishesIntroduce;
+    }
+
+    public void setDishesIntroduce(String dishesIntroduce) {
+        this.dishesIntroduce = dishesIntroduce;
     }
 
     public Integer getPraiseNum() {
@@ -89,14 +95,6 @@ public class Dishes {
         this.collectNum = collectNum;
     }
 
-    public Date getPublishTime() {
-        return publishTime;
-    }
-
-    public void setPublishTime(Date publishTime) {
-        this.publishTime = publishTime;
-    }
-
     public Double getRating() {
         return rating;
     }
@@ -105,11 +103,19 @@ public class Dishes {
         this.rating = rating;
     }
 
-    public String getDishesIntroduce() {
-        return dishesIntroduce;
+    public Integer getCount() {
+        return count;
     }
 
-    public void setDishesIntroduce(String dishesIntroduce) {
-        this.dishesIntroduce = dishesIntroduce == null ? null : dishesIntroduce.trim();
+    public void setCount(Integer count) {
+        this.count = count;
+    }
+
+    public Date getPublishTime() {
+        return publishTime;
+    }
+
+    public void setPublishTime(Date publishTime) {
+        this.publishTime = publishTime;
     }
 }

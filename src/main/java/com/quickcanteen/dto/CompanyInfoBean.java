@@ -1,15 +1,16 @@
-package com.quickcanteen.model;
+package com.quickcanteen.dto;
 
 import java.util.Date;
 
-public class CompanyInfo {
+/**
+ * Created by 11022 on 2017/8/20.
+ */
+public class CompanyInfoBean {
     private Integer companyId;
 
     private String companyName;
 
     private String accountNumber;
-
-    private String password;
 
     private Date startTime;
 
@@ -28,7 +29,7 @@ public class CompanyInfo {
     }
 
     public void setCompanyName(String companyName) {
-        this.companyName = companyName == null ? null : companyName.trim();
+        this.companyName = companyName;
     }
 
     public String getAccountNumber() {
@@ -36,15 +37,7 @@ public class CompanyInfo {
     }
 
     public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber == null ? null : accountNumber.trim();
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+        this.accountNumber = accountNumber;
     }
 
     public Date getStartTime() {

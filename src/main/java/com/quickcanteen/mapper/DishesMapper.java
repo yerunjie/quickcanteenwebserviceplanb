@@ -1,11 +1,10 @@
 package com.quickcanteen.mapper;
 
+import com.quickcanteen.dto.DishesBean;
 import com.quickcanteen.model.Dishes;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 public interface DishesMapper {
     @Delete({
@@ -20,13 +19,13 @@ public interface DishesMapper {
         "dishes_name, praise_num, ",
         "comment_num, collect_num, ",
         "publish_time, rating, ",
-        "update_time, dishes_introduce)",
+        "dishes_introduce)",
         "values (#{dishesId,jdbcType=INTEGER}, #{companyId,jdbcType=INTEGER}, ",
         "#{price,jdbcType=DOUBLE}, #{diagrammaticSketchAddress,jdbcType=VARCHAR}, ",
         "#{dishesName,jdbcType=VARCHAR}, #{praiseNum,jdbcType=INTEGER}, ",
         "#{commentNum,jdbcType=INTEGER}, #{collectNum,jdbcType=INTEGER}, ",
         "#{publishTime,jdbcType=TIMESTAMP}, #{rating,jdbcType=DOUBLE}, ",
-        "#{updateTime,jdbcType=TIMESTAMP}, #{dishesIntroduce,jdbcType=LONGVARCHAR})"
+        "#{dishesIntroduce,jdbcType=LONGVARCHAR})"
     })
     int insert(Dishes record);
 
@@ -35,7 +34,7 @@ public interface DishesMapper {
     @Select({
         "select",
         "dishes_id, company_id, price, diagrammatic_sketch_address, dishes_name, praise_num, ",
-        "comment_num, collect_num, publish_time, rating, update_time, dishes_introduce",
+        "comment_num, collect_num, publish_time, rating, dishes_introduce",
         "from dishes",
         "where dishes_id = #{dishesId,jdbcType=INTEGER}"
     })
@@ -55,7 +54,6 @@ public interface DishesMapper {
           "collect_num = #{collectNum,jdbcType=INTEGER},",
           "publish_time = #{publishTime,jdbcType=TIMESTAMP},",
           "rating = #{rating,jdbcType=DOUBLE},",
-          "update_time = #{updateTime,jdbcType=TIMESTAMP},",
           "dishes_introduce = #{dishesIntroduce,jdbcType=LONGVARCHAR}",
         "where dishes_id = #{dishesId,jdbcType=INTEGER}"
     })
@@ -71,9 +69,26 @@ public interface DishesMapper {
           "comment_num = #{commentNum,jdbcType=INTEGER},",
           "collect_num = #{collectNum,jdbcType=INTEGER},",
           "publish_time = #{publishTime,jdbcType=TIMESTAMP},",
-          "rating = #{rating,jdbcType=DOUBLE},",
-          "update_time = #{updateTime,jdbcType=TIMESTAMP}",
+          "rating = #{rating,jdbcType=DOUBLE}",
         "where dishes_id = #{dishesId,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Dishes record);
+
+    @Select({
+            "select *",
+            "from dishes natural join order_dishes",
+            "where order_id = #{orderId,jdbcType=INTEGER}"
+    })
+    @ResultMap("ResultMapForDishesBean")
+    List<DishesBean> selectByOrderId(Integer orderId);
+
+    @Select({
+            "select *",
+            "from dishes natural join dishes_type",
+            "where type_id = #{typeId,jdbcType=INTEGER}"
+    })
+    @ResultMap("ResultMapWithBLOBs")
+    List<DishesBean> selectByTypeId(Integer typeId);
+
+    Integer checkDishesInCompany(@Param("dishesIds")List<Integer> dishesIds);
 }

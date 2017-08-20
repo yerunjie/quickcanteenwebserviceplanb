@@ -17,12 +17,10 @@ public interface CompanyInfoMapper {
     @Insert({
         "insert into company_info (company_id, company_name, ",
         "account_number, password, ",
-        "start_time, end_time, ",
-        "update_time)",
+        "start_time, end_time)",
         "values (#{companyId,jdbcType=INTEGER}, #{companyName,jdbcType=VARCHAR}, ",
         "#{accountNumber,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, ",
-        "#{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, ",
-        "#{updateTime,jdbcType=TIMESTAMP})"
+        "#{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP})"
     })
     int insert(CompanyInfo record);
 
@@ -30,7 +28,7 @@ public interface CompanyInfoMapper {
 
     @Select({
         "select",
-        "company_id, company_name, account_number, password, start_time, end_time, update_time",
+        "company_id, company_name, account_number, password, start_time, end_time",
         "from company_info",
         "where company_id = #{companyId,jdbcType=INTEGER}"
     })
@@ -45,8 +43,7 @@ public interface CompanyInfoMapper {
           "account_number = #{accountNumber,jdbcType=VARCHAR},",
           "password = #{password,jdbcType=VARCHAR},",
           "start_time = #{startTime,jdbcType=TIMESTAMP},",
-          "end_time = #{endTime,jdbcType=TIMESTAMP},",
-          "update_time = #{updateTime,jdbcType=TIMESTAMP}",
+          "end_time = #{endTime,jdbcType=TIMESTAMP}",
         "where company_id = #{companyId,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(CompanyInfo record);

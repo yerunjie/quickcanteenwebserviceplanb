@@ -9,8 +9,6 @@ public class TimeSlot {
 
     private Date endTime;
 
-    private Date updateTime;
-
     public Integer getTimeSlotId() {
         return timeSlotId;
     }
@@ -33,13 +31,5 @@ public class TimeSlot {
 
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
     }
 }

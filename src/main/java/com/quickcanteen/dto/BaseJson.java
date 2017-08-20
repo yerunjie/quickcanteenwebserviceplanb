@@ -16,7 +16,7 @@ public class BaseJson implements Serializable, Cloneable {
 
     public BaseJson() {
         this.returnCode = "";
-        this.errorMessage = "";
+        this.errorMessage = "成功";
     }
 
 

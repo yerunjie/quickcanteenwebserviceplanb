@@ -5,7 +5,6 @@ DROP TABLE IF EXISTS `collect_dishes`;
 CREATE TABLE `collect_dishes` (
   `dishes_id` int(11) NOT NULL,
   `collector_id` int(11) NOT NULL,
-  `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`dishes_id`,`collector_id`),
   KEY `collector_id` (`collector_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -17,7 +16,6 @@ DROP TABLE IF EXISTS `comment_company`;
 CREATE TABLE `comment_company` (
   `company_id` int(255) NOT NULL,
   `comment_id` int(11) NOT NULL,
-  `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`company_id`,`comment_id`),
   KEY `comment_company_ibfk_2` (`comment_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -29,7 +27,6 @@ DROP TABLE IF EXISTS `comment_dishes`;
 CREATE TABLE `comment_dishes` (
   `dishes_id` int(11) NOT NULL,
   `comment_id` int(11) NOT NULL,
-  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`dishes_id`,`comment_id`),
   KEY `comment_dishes_ibfk_1` (`comment_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -45,7 +42,6 @@ CREATE TABLE `company_info` (
   `password` varchar(20) NOT NULL,
   `start_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `end_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`company_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
@@ -59,7 +55,6 @@ CREATE TABLE `company_time_slot` (
   `people_number` int(11) NOT NULL,
   `max_people_number` int(11) NOT NULL,
   `busy_state` int(11) NOT NULL,
-  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`company_id`,`time_slot_id`),
   KEY `timeslot_id` (`time_slot_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -80,7 +75,6 @@ CREATE TABLE `dishes` (
   `collect_num` int(11) DEFAULT 0,
   `publish_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `rating` double DEFAULT 0,
-  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`dishes_id`),
   KEY `company_id` (`company_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -92,7 +86,7 @@ DROP TABLE IF EXISTS `dishes_type`;
 CREATE TABLE `dishes_type` (
   `dishes_id` int(11) NOT NULL,
   `type_id` int(11) NOT NULL,
-  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
   PRIMARY KEY (`dishes_id`,`type_id`),
   KEY `type_id` (`type_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -105,12 +99,11 @@ CREATE TABLE `order` (
   `order_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `company_id` int(11) NOT NULL,
-  `order_state` int(11) NOT NULL,
+  `order_state` int(11) DEFAULT 10,
   `publish_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `complete_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `total_price` double NOT NULL,
-  `timeslot_id` int(11) DEFAULT NULL,
-  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `timeslot_id` int(11) DEFAULT 0,
   PRIMARY KEY (`order_id`),
   KEY `company_id` (`company_id`),
   KEY `user_id` (`user_id`),
@@ -125,7 +118,6 @@ CREATE TABLE `order_dishes` (
   `order_id` int(11) NOT NULL,
   `dishes_id` int(11) NOT NULL,
   `count` int(11) NOT NULL,
-  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`order_id`,`dishes_id`),
   KEY `dishes_id` (`dishes_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -137,7 +129,6 @@ DROP TABLE IF EXISTS `praise_dishes`;
 CREATE TABLE `praise_dishes` (
   `praise_from_user_id` int(11) NOT NULL DEFAULT '0',
   `praise_dishes_id` int(11) NOT NULL DEFAULT '0',
-  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`praise_from_user_id`,`praise_dishes_id`),
   KEY `praise_dishes_id` (`praise_dishes_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -150,7 +141,6 @@ CREATE TABLE `time_slot` (
   `time_slot_id` int(11) NOT NULL AUTO_INCREMENT,
   `start_time` time NOT NULL,
   `end_time` time NOT NULL,
-  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`time_slot_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
@@ -162,7 +152,6 @@ CREATE TABLE `type` (
   `type_id` int(11) NOT NULL AUTO_INCREMENT,
   `type_name` varchar(20) NOT NULL,
   `company_id` int(11) NOT NULL,
-  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`type_id`),
   KEY `company_id` (`company_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
@@ -176,7 +165,6 @@ CREATE TABLE `user_comment` (
   `commenter_id` int(11) NOT NULL,
   `comment_content` text,
   `rating` double DEFAULT NULL,
-  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`comment_id`),
   KEY `commenter_id` (`commenter_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -198,7 +186,6 @@ CREATE TABLE `user_info` (
   `university_name` varchar(30) DEFAULT '',
   `is_admin` int(11) DEFAULT 0,
   `points` int(11) DEFAULT 0,
-  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`user_id`),
   UNIQUE INDEX (`account_number`) USING HASH
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

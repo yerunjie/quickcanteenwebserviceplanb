@@ -16,11 +16,9 @@ public interface UserCommentMapper {
 
     @Insert({
         "insert into user_comment (comment_id, commenter_id, ",
-        "rating, update_time, ",
-        "comment_content)",
+        "rating, comment_content)",
         "values (#{commentId,jdbcType=INTEGER}, #{commenterId,jdbcType=INTEGER}, ",
-        "#{rating,jdbcType=DOUBLE}, #{updateTime,jdbcType=TIMESTAMP}, ",
-        "#{commentContent,jdbcType=LONGVARCHAR})"
+        "#{rating,jdbcType=DOUBLE}, #{commentContent,jdbcType=LONGVARCHAR})"
     })
     int insert(UserComment record);
 
@@ -28,7 +26,7 @@ public interface UserCommentMapper {
 
     @Select({
         "select",
-        "comment_id, commenter_id, rating, update_time, comment_content",
+        "comment_id, commenter_id, rating, comment_content",
         "from user_comment",
         "where comment_id = #{commentId,jdbcType=INTEGER}"
     })
@@ -41,7 +39,6 @@ public interface UserCommentMapper {
         "update user_comment",
         "set commenter_id = #{commenterId,jdbcType=INTEGER},",
           "rating = #{rating,jdbcType=DOUBLE},",
-          "update_time = #{updateTime,jdbcType=TIMESTAMP},",
           "comment_content = #{commentContent,jdbcType=LONGVARCHAR}",
         "where comment_id = #{commentId,jdbcType=INTEGER}"
     })
@@ -50,8 +47,7 @@ public interface UserCommentMapper {
     @Update({
         "update user_comment",
         "set commenter_id = #{commenterId,jdbcType=INTEGER},",
-          "rating = #{rating,jdbcType=DOUBLE},",
-          "update_time = #{updateTime,jdbcType=TIMESTAMP}",
+          "rating = #{rating,jdbcType=DOUBLE}",
         "where comment_id = #{commentId,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(UserComment record);

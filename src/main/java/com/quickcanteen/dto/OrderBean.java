@@ -1,23 +1,23 @@
-package com.quickcanteen.model;
+package com.quickcanteen.dto;
 
-import java.util.Date;
+import java.util.List;
 
-public class Order {
+/**
+ * Created by 11022 on 2017/8/20.
+ */
+public class OrderBean {
     private Integer orderId;
-
     private Integer userId;
-
     private Integer companyId;
-
+    private String companyName;
     private Integer orderState;
-
-    private Date publishTime;
-
-    private Date completeTime;
-
+    private Long publishTime;
+    private Long completeTime;
     private Double totalPrice;
-
     private Integer timeslotId;
+    private String timeslot;
+    private List<DishesBean> dishesBeanList;
+
 
     public Integer getOrderId() {
         return orderId;
@@ -51,19 +51,19 @@ public class Order {
         this.orderState = orderState;
     }
 
-    public Date getPublishTime() {
+    public Long getPublishTime() {
         return publishTime;
     }
 
-    public void setPublishTime(Date publishTime) {
+    public void setPublishTime(Long publishTime) {
         this.publishTime = publishTime;
     }
 
-    public Date getCompleteTime() {
+    public Long getCompleteTime() {
         return completeTime;
     }
 
-    public void setCompleteTime(Date completeTime) {
+    public void setCompleteTime(Long completeTime) {
         this.completeTime = completeTime;
     }
 
@@ -81,5 +81,29 @@ public class Order {
 
     public void setTimeslotId(Integer timeslotId) {
         this.timeslotId = timeslotId;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getTimeslot() {
+        return timeslot;
+    }
+
+    public void setTimeslot(String timeslot) {
+        this.timeslot = timeslot;
+    }
+
+    public List<DishesBean> getDishesBeanList() {
+        return dishesBeanList;
+    }
+
+    public void setDishesBeanList(List<DishesBean> dishesBeanList) {
+        this.dishesBeanList = dishesBeanList;
     }
 }

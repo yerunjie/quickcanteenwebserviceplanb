@@ -16,9 +16,9 @@ public interface TimeSlotMapper {
 
     @Insert({
         "insert into time_slot (time_slot_id, start_time, ",
-        "end_time, update_time)",
+        "end_time)",
         "values (#{timeSlotId,jdbcType=INTEGER}, #{startTime,jdbcType=TIME}, ",
-        "#{endTime,jdbcType=TIME}, #{updateTime,jdbcType=TIMESTAMP})"
+        "#{endTime,jdbcType=TIME})"
     })
     int insert(TimeSlot record);
 
@@ -26,7 +26,7 @@ public interface TimeSlotMapper {
 
     @Select({
         "select",
-        "time_slot_id, start_time, end_time, update_time",
+        "time_slot_id, start_time, end_time",
         "from time_slot",
         "where time_slot_id = #{timeSlotId,jdbcType=INTEGER}"
     })
@@ -38,8 +38,7 @@ public interface TimeSlotMapper {
     @Update({
         "update time_slot",
         "set start_time = #{startTime,jdbcType=TIME},",
-          "end_time = #{endTime,jdbcType=TIME},",
-          "update_time = #{updateTime,jdbcType=TIMESTAMP}",
+          "end_time = #{endTime,jdbcType=TIME}",
         "where time_slot_id = #{timeSlotId,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(TimeSlot record);

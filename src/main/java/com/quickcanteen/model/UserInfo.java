@@ -27,8 +27,6 @@ public class UserInfo {
 
     private Integer points;
 
-    private Date updateTime;
-
     public Integer getUserId() {
         return userId;
     }
@@ -123,13 +121,5 @@ public class UserInfo {
 
     public void setPoints(Integer points) {
         this.points = points;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
     }
 }
