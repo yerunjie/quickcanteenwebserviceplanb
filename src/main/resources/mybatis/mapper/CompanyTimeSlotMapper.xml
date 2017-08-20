@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.quickcanteen.mapper.CompanyTimeSlotMapper" >
+  <resultMap id="BaseResultMap" type="com.quickcanteen.model.CompanyTimeSlot" >
+    <id column="company_id" property="companyId" jdbcType="INTEGER" />
+    <id column="time_slot_id" property="timeSlotId" jdbcType="INTEGER" />
+    <result column="people_number" property="peopleNumber" jdbcType="INTEGER" />
+    <result column="max_people_number" property="maxPeopleNumber" jdbcType="INTEGER" />
+    <result column="busy_state" property="busyState" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    company_id, time_slot_id, people_number, max_people_number, busy_state
+  </sql>
+  <insert id="insertSelective" parameterType="com.quickcanteen.model.CompanyTimeSlot" >
+    insert into company_time_slot
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="timeSlotId != null" >
+        time_slot_id,
+      </if>
+      <if test="peopleNumber != null" >
+        people_number,
+      </if>
+      <if test="maxPeopleNumber != null" >
+        max_people_number,
+      </if>
+      <if test="busyState != null" >
+        busy_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="timeSlotId != null" >
+        #{timeSlotId,jdbcType=INTEGER},
+      </if>
+      <if test="peopleNumber != null" >
+        #{peopleNumber,jdbcType=INTEGER},
+      </if>
+      <if test="maxPeopleNumber != null" >
+        #{maxPeopleNumber,jdbcType=INTEGER},
+      </if>
+      <if test="busyState != null" >
+        #{busyState,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.quickcanteen.model.CompanyTimeSlot" >
+    update company_time_slot
+    <set >
+      <if test="peopleNumber != null" >
+        people_number = #{peopleNumber,jdbcType=INTEGER},
+      </if>
+      <if test="maxPeopleNumber != null" >
+        max_people_number = #{maxPeopleNumber,jdbcType=INTEGER},
+      </if>
+      <if test="busyState != null" >
+        busy_state = #{busyState,jdbcType=INTEGER},
+      </if>
+    </set>
+    where company_id = #{companyId,jdbcType=INTEGER}
+      and time_slot_id = #{timeSlotId,jdbcType=INTEGER}
+  </update>
+</mapper>
