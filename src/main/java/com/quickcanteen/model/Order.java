@@ -9,7 +9,7 @@ public class Order {
 
     private Integer companyId;
 
-    private Integer orderState;
+    private Integer orderStatus;
 
     private Date publishTime;
 
@@ -43,12 +43,12 @@ public class Order {
         this.companyId = companyId;
     }
 
-    public Integer getOrderState() {
-        return orderState;
+    public Integer getOrderStatus() {
+        return orderStatus;
     }
 
-    public void setOrderState(Integer orderState) {
-        this.orderState = orderState;
+    public void setOrderStatus(Integer orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     public Date getPublishTime() {

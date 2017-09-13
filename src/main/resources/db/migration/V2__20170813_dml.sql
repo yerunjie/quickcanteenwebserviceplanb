@@ -25,17 +25,3 @@ INSERT INTO `user_info` VALUES ('1', '10152510261', '123456', '1', 'yrj', '叶�
 
 INSERT INTO `company_info` VALUES ('1', '河西食堂', 'hexishitang', '12345', '2017-05-01 21:57:26', '2017-06-18 21:57:46');
 
-INSERT INTO `quickcanteen`.`dishes_type` (`dishes_id`, `type_id`) VALUES ('1', '1');
-INSERT INTO `quickcanteen`.`dishes_type` (`dishes_id`, `type_id`) VALUES ('2', '1');
-INSERT INTO `quickcanteen`.`dishes_type` (`dishes_id`, `type_id`) VALUES ('3', '1');
-INSERT INTO `quickcanteen`.`dishes_type` (`dishes_id`, `type_id`) VALUES ('4', '2');
-INSERT INTO `quickcanteen`.`dishes_type` (`dishes_id`, `type_id`) VALUES ('5', '2');
-INSERT INTO `quickcanteen`.`dishes_type` (`dishes_id`, `type_id`) VALUES ('6', '2');
-INSERT INTO `quickcanteen`.`dishes_type` (`dishes_id`, `type_id`) VALUES ('7', '2');
-INSERT INTO `quickcanteen`.`dishes_type` (`dishes_id`, `type_id`) VALUES ('8', '5');
-INSERT INTO `quickcanteen`.`dishes_type` (`dishes_id`, `type_id`) VALUES ('9', '3');
-INSERT INTO `quickcanteen`.`dishes_type` (`dishes_id`, `type_id`) VALUES ('10', '3');
-INSERT INTO `quickcanteen`.`dishes_type` (`dishes_id`, `type_id`) VALUES ('11', '4');
-INSERT INTO `quickcanteen`.`dishes_type` (`dishes_id`, `type_id`) VALUES ('12', '4');
-INSERT INTO `quickcanteen`.`dishes_type` (`dishes_id`, `type_id`) VALUES ('13', '3');
-

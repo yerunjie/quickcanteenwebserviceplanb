@@ -10,13 +10,13 @@ public class OrderBean {
     private Integer userId;
     private Integer companyId;
     private String companyName;
-    private Integer orderState;
+    private Integer orderStatus;
     private Long publishTime;
     private Long completeTime;
     private Double totalPrice;
     private Integer timeslotId;
     private String timeslot;
-    private List<DishesBean> dishesBeanList;
+    private List<DishesBean> dishesList;
 
 
     public Integer getOrderId() {
@@ -43,12 +43,12 @@ public class OrderBean {
         this.companyId = companyId;
     }
 
-    public Integer getOrderState() {
-        return orderState;
+    public Integer getOrderStatus() {
+        return orderStatus;
     }
 
-    public void setOrderState(Integer orderState) {
-        this.orderState = orderState;
+    public void setOrderStatus(Integer orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     public Long getPublishTime() {
@@ -99,11 +99,11 @@ public class OrderBean {
         this.timeslot = timeslot;
     }
 
-    public List<DishesBean> getDishesBeanList() {
-        return dishesBeanList;
+    public List<DishesBean> getDishesList() {
+        return dishesList;
     }
 
-    public void setDishesBeanList(List<DishesBean> dishesBeanList) {
-        this.dishesBeanList = dishesBeanList;
+    public void setDishesList(List<DishesBean> dishesList) {
+        this.dishesList = dishesList;
     }
 }
