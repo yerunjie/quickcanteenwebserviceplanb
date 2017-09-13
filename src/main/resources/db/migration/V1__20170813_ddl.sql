@@ -99,7 +99,7 @@ CREATE TABLE `order` (
   `order_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `company_id` int(11) NOT NULL,
-  `order_status` int(11) DEFAULT 10,
+  `order_state` int(11) DEFAULT 10,
   `publish_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `complete_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `total_price` double NOT NULL,

@@ -182,19 +182,6 @@ public class OrderController extends APIBaseController {
         return baseJson;
     }
 
-    @RequestMapping(value = "/getOrdersListByUserIDByPage")
-    @Authentication(Role.User)
-    public BaseJson getOrdersListByPage(@RequestParam("pageNumber") int pageNumber,
-                                        @RequestParam("pageSize") int pageSize) {
-        BaseJson baseJson = new BaseJson();
-        if (pageNumber < 0 || pageSize <= 0) {
-            return getWrongParamResult();
-        }
-        List<OrderBean> orderBeans = orderMapper.selectByUserId(getToken().getId(),new RowBounds(pageNumber*pageSize,pageSize)).stream().map(this::parse).collect(Collectors.toList());
-        baseJson.setObj(orderBeans);
-        return baseJson;
-    }
-
     private OrderBean parse(Order order) {
         OrderBean orderBean = new OrderBean();
         try {
