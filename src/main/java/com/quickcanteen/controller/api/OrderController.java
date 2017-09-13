@@ -113,6 +113,31 @@ public class OrderController extends APIBaseController {
         return baseJson;
     }
 
+    @RequestMapping(value = "/getOrdersListByUserIDByPage")
+    @Authentication
+    public BaseJson getOrdersListByUserIDByPage(@RequestParam("userID") Integer userId,
+                                                @RequestParam("pageNumber") Integer pageNumber,
+                                                @RequestParam("pageSize") Integer pageSize) {
+        BaseJson baseJson = new BaseJson();
+        List<Order> orders = orderMapper.selectByUserId(userId, new RowBounds(pageNumber * pageSize, pageSize));
+        List<OrderBean> orderBeans = orders.stream().map(this::parse).collect(Collectors.toList());
+        switch (getToken().getRole()) {
+            case User:
+                if (userId.equals(getToken().getId())) {
+                    baseJson.setObj(orderBeans);
+                } else {
+                    return getUnauthorizedResult();
+                }
+                break;
+            case Admin:
+                baseJson.setObj(orderBeans);
+                break;
+            default:
+                return getUnauthorizedResult();
+        }
+        return baseJson;
+    }
+
     @RequestMapping(value = "/placeOrder")
     @Authentication(Role.User)
     public BaseJson getOrderById(@RequestParam("companyID") int companyID,

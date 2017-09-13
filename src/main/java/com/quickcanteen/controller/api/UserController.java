@@ -66,6 +66,7 @@ public class UserController extends APIBaseController {
             default:
                 return getUnauthorizedResult();
         }
+        baseJson.setReturnCode("4.0");
         return baseJson;
     }
 

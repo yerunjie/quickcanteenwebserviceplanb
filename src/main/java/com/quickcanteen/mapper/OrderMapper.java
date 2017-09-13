@@ -5,6 +5,9 @@ import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
+import org.apache.ibatis.session.RowBounds;
+
+import java.util.List;
 
 public interface OrderMapper {
     @Delete({
@@ -28,11 +31,9 @@ public interface OrderMapper {
     int insertSelective(Order record);
 
     @Select({
-            "select",
-            "order_id, user_id, company_id, order_status, publish_time, complete_time, total_price, ",
-            "timeslot_id",
-            "from `order`",
-            "where order_id = #{orderId,jdbcType=INTEGER}"
+        "select * ",
+        "from `order`",
+        "where order_id = #{orderId,jdbcType=INTEGER}"
     })
     @ResultMap("BaseResultMap")
     Order selectByPrimaryKey(Integer orderId);
@@ -52,19 +53,18 @@ public interface OrderMapper {
     })
     int updateByPrimaryKey(Order record);
 
+    @Select({
+            "select * ",
+            "from `order`",
+            "where user_id = #{userId} order by publish_time desc"
+    })
+    @ResultMap("BaseResultMap")
+    List<Order> selectByUserId(Integer userId, RowBounds rowBounds);
+
     @Update({
             "update `order`",
             "set order_status = #{orderStatus,jdbcType=INTEGER},",
             "where order_id = #{orderId,jdbcType=INTEGER}"
     })
     int updateOrderStatus(Order record);
-
-    @Select({
-            "select *",
-            "from `order`",
-            "where user_id = #{userId,jdbcType=INTEGER}",
-            "order by publish_time desc"
-    })
-    @ResultMap("BaseResultMap")
-    List<Order> selectByUserId(Integer userId, RowBounds rowBounds);
 }
