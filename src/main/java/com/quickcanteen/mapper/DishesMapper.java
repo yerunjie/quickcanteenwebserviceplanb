@@ -110,6 +110,14 @@ public interface DishesMapper {
     List<Dishes> getDishesByUserId(int userId);
 
     @Select({
+            "select dishes.* ",
+            "from dishes natural join collect_dishes ",
+            "where collector_id = #{userId}"
+    })
+    @ResultMap("BaseResultMap")
+    List<Dishes> getCollectDishesListByUserId(int userId);
+
+    @Select({
             "select * ",
             "from dishes ",
             "where company_id = #{companyId,jdbcType=INTEGER}"
