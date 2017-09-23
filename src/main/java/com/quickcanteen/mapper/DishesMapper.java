@@ -108,4 +108,12 @@ public interface DishesMapper {
     })
     @ResultMap("BaseResultMap")
     List<Dishes> getDishesByUserId(int userId);
+
+    @Select({
+            "select * ",
+            "from dishes ",
+            "where company_id = #{companyId,jdbcType=INTEGER}"
+    })
+    @ResultMap("BaseResultMap")
+    List<Dishes> getDishesByCompanyId(int companyId);
 }
