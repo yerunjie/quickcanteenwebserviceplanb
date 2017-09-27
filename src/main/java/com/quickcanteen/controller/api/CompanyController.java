@@ -77,7 +77,7 @@ public class CompanyController extends APIBaseController {
         }
         if(login_result>0){
             HttpSession session = request.getSession();
-            session.setAttribute("Account",login_result);
+            session.setAttribute("companyId",login_result);
         }
         result.put("returnCode",String.valueOf(login_result));
 
