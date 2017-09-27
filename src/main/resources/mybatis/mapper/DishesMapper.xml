@@ -26,7 +26,8 @@
     <sql id="Blob_Column_List">
         dishes_introduce
     </sql>
-    <insert id="insertSelective" parameterType="com.quickcanteen.model.Dishes">
+    <insert id="insertSelective" parameterType="com.quickcanteen.model.Dishes" useGeneratedKeys="true" keyProperty="dishesId"
+    >
         insert into dishes
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="dishesId != null">

@@ -61,7 +61,7 @@ public class WebCompanyController extends BaseController{
     public String tables(Map<String,Object> model) {
         List<Dishes> dishesList;
         dishesList = dishesMapper.getDishesByCompanyId(getCurrentCompanyId());
-        model.put("disheslist",dishesList);
+        model.put("dishesList",dishesList);
         return "tables";
     }
 

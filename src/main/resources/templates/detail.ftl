@@ -89,7 +89,6 @@ To change this template use File | Settings | File Templates.
         <li role="presentation" class="divider"></li>
         <li><a href="login.html"><span class="glyphicon glyphicon-user"></span> Login Page</a></li>
     </ul>
-    <div class="attribution">More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></div>
 </div><!--/.sidebar-->
 
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -105,8 +104,6 @@ To change this template use File | Settings | File Templates.
             <h1 class="page-header">Dashboard</h1>
         </div>
     </div><!--/.row-->
-
-    <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >网页模板</a></div>
 
     <div class="row">
         <div class="col-xs-12 col-md-6 col-lg-3">
@@ -223,7 +220,7 @@ To change this template use File | Settings | File Templates.
                 <div class="panel-body">
                     <ul>
                         <li class="left clearfix">`</li>
-                        <c:forEach items="${commentList}" var="comment">
+                        <#list commentList as comment>
                             <li class="right clearfix">
 								<span class="chat-img pull-right">
 									<img src="http://placehold.it/80/dde0e6/5f6468" alt="User Avatar" class="img-circle" />
@@ -238,7 +235,7 @@ To change this template use File | Settings | File Templates.
                                     </p>
                                 </div>
                             </li>
-                        </c:forEach>
+                        </#list>
 
                     </ul>
                 </div>

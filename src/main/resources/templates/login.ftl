@@ -99,7 +99,7 @@ To change this template use File | Settings | File Templates.
                     alert("没有该用户");
                 }
                 else{
-                    alert("登陆成功");
+                    alert("登录成功");
                     window.location.href="index";
                 }
             },

@@ -1,7 +1,10 @@
 package com.quickcanteen.model;
 
+import lombok.NoArgsConstructor;
+
 import java.util.Date;
 
+@NoArgsConstructor
 public class Dishes {
     private Integer dishesId;
 
@@ -24,6 +27,15 @@ public class Dishes {
     private Double rating;
 
     private String dishesIntroduce;
+
+    public Dishes(String name,Double price,String introduction,Integer dishesId){
+        this.dishesId = dishesId;
+        this.dishesName = name;
+        this.price = price;
+        this.dishesIntroduce = introduction;
+    }
+
+
 
     public Integer getDishesId() {
         return dishesId;

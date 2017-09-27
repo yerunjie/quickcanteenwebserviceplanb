@@ -84,6 +84,42 @@ public class CompanyController extends APIBaseController {
         return result;
     }
 
+    @RequestMapping(value = "/edit",method = RequestMethod.POST)
+    public Map edit(@RequestParam("name") String name, @RequestParam("price") Double price,@RequestParam("introduction") String introduction,@RequestParam("dishesId") int dishesId){
+        Map result = new HashMap();
+        Dishes dishes = new Dishes(name,price,introduction,dishesId);
+        int edit_result = 0;
+        edit_result = dishesMapper.updateByPrimaryKeySelective(dishes);
+        result.put("returnCode",String.valueOf(edit_result));
+        return result;
+    }
+
+    @RequestMapping(value = "/delete",method = RequestMethod.POST)
+    public Map delete(@RequestParam("dishesId") int dishesId){
+        Map result = new HashMap();
+        int delete_result = 0;
+        delete_result = dishesMapper.deleteByPrimaryKey(dishesId);
+        result.put("returnCode",String.valueOf(delete_result));
+        return result;
+    }
+
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    public Map add(@RequestParam("name") String name, @RequestParam("price") Double price,@RequestParam("introduction") String introduction){
+        Map result = new HashMap();
+        Dishes dishes = new Dishes();
+        dishes.setDishesName(name);
+        dishes.setPrice(price);
+        dishes.setDishesIntroduce(introduction);
+        dishesMapper.insertSelective(dishes);
+        int add_result = dishes.getDishesId();
+        result.put("returnCode",String.valueOf(add_result));
+        return result;
+    }
+
+
+
+
+
     private TypeBean parse(Type type) {
         TypeBean typeBean = new TypeBean();
         try {

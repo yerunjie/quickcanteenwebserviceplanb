@@ -59,12 +59,12 @@ To change this template use File | Settings | File Templates.
         </div>
     </form>
     <ul class="nav menu">
-        <li><a href="../index.jsp"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
-        <li><a href="widgets.jsp"><span class="glyphicon glyphicon-th"></span> Widgets</a></li>
-        <li><a href="charts.jsp"><span class="glyphicon glyphicon-stats"></span> Charts</a></li>
-        <li class="active"><a href="tables.jsp"><span class="glyphicon glyphicon-list-alt"></span> 菜品</a></li>
-        <li><a href="forms.jsp"><span class="glyphicon glyphicon-pencil"></span> Forms</a></li>
-        <li><a href="panels.jsp"><span class="glyphicon glyphicon-info-sign"></span> Alerts &amp; Panels</a></li>
+        <li><a href="../index"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
+        <li><a href="widgets"><span class="glyphicon glyphicon-th"></span> Widgets</a></li>
+        <li><a href="charts"><span class="glyphicon glyphicon-stats"></span> Charts</a></li>
+        <li class="active"><a href="tables"><span class="glyphicon glyphicon-list-alt"></span> 菜品</a></li>
+        <li><a href="forms"><span class="glyphicon glyphicon-pencil"></span> Forms</a></li>
+        <li><a href="panels"><span class="glyphicon glyphicon-info-sign"></span> Alerts &amp; Panels</a></li>
         <li class="parent ">
             <a href="#">
                 <span class="glyphicon glyphicon-list"></span> Dropdown <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
@@ -129,26 +129,25 @@ To change this template use File | Settings | File Templates.
 
 
                         <tbody>
-                        <c:forEach items="${disheslist}" var="disheslist">
+                            <tr>
+                                <td data-field="add" >增加</td>
+                                <td data-field="null" data-sortable="true"></td>
+                                <td data-field="null" data-sortable="true"></td>
+                                <td data-field="null"  data-sortable="true"></td>
+                                <td data-field="null" data-sortable="true"></td>
+                                <td data-field="null" data-sortable="true"><img src="/image/add.svg" data-toggle="modal" data-target="#myModal" ></td>
+                            </tr>
+                        <#list dishesList as dishes>
                             <tr>
 
                                 <td data-field="state" data-checkbox="true" >菜品编号</td>
-                                <td data-field="id" data-sortable="true"> ${disheslist.dishesId}</td>
-                                <td data-field="name" data-sortable="true"><a href="detail?dishesId=${disheslist.dishesId}">${disheslist.dishesName}</a></td>
-                                <td data-field="price"  data-sortable="true">${disheslist.price}</td>
+                                <td data-field="id" data-sortable="true"> ${dishes.dishesId}</td>
+                                <td data-field="name" data-sortable="true"><a href="detail?dishesId=${dishes.dishesId}">${dishes.dishesName}</a></td>
+                                <td data-field="price"  data-sortable="true">${dishes.price}</td>
                                 <td data-field="picture" data-sortable="true">菜品图片</td>
-                                <td data-field="modify" data-sortable="true"><img src="image/edit.svg" data-toggle="modal" data-target="#myModal${disheslist.dishesId}"><img src="image/close.svg" style="margin-left: 40px" onclick="deletedishes(${disheslist.dishesId});"></td>
+                                <td data-field="modify" data-sortable="true"><img src="/image/edit.svg" data-toggle="modal" data-target="#myModal${dishes.dishesId}"><img src="/image/close.svg" style="margin-left: 40px" onclick="deletedishes(${dishes.dishesId});"></td>
                             </tr>
-                        </c:forEach>
-                        <tr>
-                            <td data-field="add" >增加</td>
-                            <td data-field="null" data-sortable="true"></td>
-                            <td data-field="null" data-sortable="true"></td>
-                            <td data-field="null"  data-sortable="true"></td>
-                            <td data-field="null" data-sortable="true"></td>
-                            <td data-field="null" data-sortable="true"><img src="image/add.svg" data-toggle="modal" data-target="#myModal" ></td>
-                        </tr>
-
+                        </#list>
                         </tbody>
 
                     </table>
@@ -159,7 +158,7 @@ To change this template use File | Settings | File Templates.
     </div><!--/.row-->
 
 
-    <c:forEach items="${disheslist}" var="dishes">
+    <#list dishesList as dishes>
         <div class="modal fade" style="width:800px ;height:900px " id="myModal${dishes.dishesId}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel${dishes.dishesId}">
             <div class="modal-dialog" style="width:780px; " role="document">
                 <div class="modal-content">
@@ -182,7 +181,7 @@ To change this template use File | Settings | File Templates.
                 </div>
             </div>
         </div>
-    </c:forEach>
+    </#list>
 
     <div class="modal fade" style="width:800px ;height:900px " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" style="width:780px; " role="document">
@@ -208,36 +207,7 @@ To change this template use File | Settings | File Templates.
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">Basic Table</div>
-                <div class="panel-body">
-                    <table data-toggle="table" data-url="tables/data2.json" >
-                        <thead>
-                        <tr>
-                            <th data-field="id" data-align="right">Item ID</th>
-                            <th data-field="name">Item Name</th>
-                            <th data-field="price">Item Price</th>
-                        </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">Styled Table</div>
-                <div class="panel-body">
-                    <table data-toggle="table" id="table-style" data-url="tables/data2.json" data-row-style="rowStyle">
-                        <thead>
-                        <tr>
-                            <th data-field="id" data-align="right" >Item ID</th>
-                            <th data-field="name" >Item Name</th>
-                            <th data-field="price" >Item Price</th>
-                        </tr>
-                        </thead>
-                    </table>
+
                     <script>
                         $(function () {
                             $('#hover, #striped, #condensed').click(function () {
@@ -268,10 +238,7 @@ To change this template use File | Settings | File Templates.
                             return {};
                         }
                     </script>
-                </div>
-            </div>
-        </div>
-    </div><!--/.row-->
+
 
 
 </div><!--/.main-->
@@ -307,7 +274,7 @@ To change this template use File | Settings | File Templates.
 
         $.ajax({
             type: "post",
-            url:"company/edit",
+            url:"/api/company/edit",
             timeout:8000,
             dataType:"json",
             data:{
@@ -318,10 +285,7 @@ To change this template use File | Settings | File Templates.
             },
 
             success:function(data){
-
-                alert("!!!!!")
-
-                if(data.returnCode=="0"){
+                if(data.returnCode==="0"){
                     alert("修改失败");
                 }
                 else{
@@ -341,14 +305,14 @@ To change this template use File | Settings | File Templates.
         {
             $.ajax({
                 type: "post",
-                url: "company/delete",
+                url: "/api/company/delete",
                 timeout: 8000,
                 dataType: "json",
                 data: {
-                    "dishesId": dishesId,
+                    "dishesId": dishesId
                 },
                 success: function (data) {
-                    if (data.returnCode == "0") {
+                    if (data.returnCode === "0") {
                         alert("删除失败");
                     }
                     else {
@@ -375,7 +339,7 @@ To change this template use File | Settings | File Templates.
 
         $.ajax({
             type: "post",
-            url: "company/add",
+            url: "/api/company/add",
             timeout: 8000,
             dataType: "json",
             data: {
@@ -384,7 +348,8 @@ To change this template use File | Settings | File Templates.
                 "introduction":introduction
             },
             success: function (data) {
-                if (data.returnCode == "0") {
+                alert(data.returnCode);
+                if (data.returnCode === "0") {
                     alert("添加失败");
                 }
                 else {
@@ -403,7 +368,7 @@ To change this template use File | Settings | File Templates.
         var picaddress = $("PictureFile").val();
         $.ajax({
             type: "post",
-            url: "company/upload",
+            url: "/api/company/upload",
             timeout: 8000,
             dataType: "json",
             data: {
