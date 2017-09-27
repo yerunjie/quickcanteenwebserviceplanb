@@ -116,6 +116,7 @@ public interface DishesMapper {
     })
     @ResultMap("BaseResultMap")
     List<Dishes> getCollectDishesListByUserId(int userId);
+<<<<<<< HEAD
 
     @Select({
             "select * ",
@@ -124,4 +125,6 @@ public interface DishesMapper {
     })
     @ResultMap("BaseResultMap")
     List<Dishes> getDishesByCompanyId(int companyId);
+=======
+>>>>>>> 609650d96d1b062b411e863e471ec40f91b69485
 }
