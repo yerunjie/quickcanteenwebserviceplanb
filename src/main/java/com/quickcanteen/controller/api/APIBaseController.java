@@ -2,6 +2,7 @@ package com.quickcanteen.controller.api;
 
 import com.quickcanteen.controller.AuthenticationRequiredController;
 import com.quickcanteen.dto.BaseJson;
+import com.quickcanteen.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,8 @@ public class APIBaseController extends AuthenticationRequiredController {
     private static final String RESOURCE_NOT_FOUND = "没有找到资源";
     private static final String NOT_AUTHORIZED = "没有权限";
     private static final String WRONG_PARAM = "参数错误";
+    @Autowired
+    protected TokenService tokenService;
 
     @Autowired
     protected HttpServletRequest request;
