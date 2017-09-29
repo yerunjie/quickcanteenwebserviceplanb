@@ -3,6 +3,7 @@ package com.quickcanteen.controller.api;
 import com.quickcanteen.annotation.Authentication;
 import com.quickcanteen.dto.BaseJson;
 import com.quickcanteen.dto.DishesBean;
+import com.quickcanteen.dto.Role;
 import com.quickcanteen.dto.TypeBean;
 import com.quickcanteen.mapper.CompanyInfoMapper;
 import com.quickcanteen.mapper.DishesMapper;
@@ -61,50 +62,49 @@ public class CompanyController extends APIBaseController {
         return baseJson;
     }
 
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Map login(@RequestParam("account") String account, @RequestParam("password") String password) {
         Map result = new HashMap();
         int login_result = 0;
-        List<CompanyInfo> companyInfoList= companyInfoMapper.selectByAccountNumber(account);
+        List<CompanyInfo> companyInfoList = companyInfoMapper.selectByAccountNumber(account);
         if (companyInfoList.size() == 0) {
             login_result = -1;
-        }
-        else{
+        } else {
             CompanyInfo companyInfo = companyInfoList.get(0);
-            if(companyInfo.getPassword().equals(password)){
+            if (companyInfo.getPassword().equals(password)) {
                 login_result = companyInfo.getCompanyId();
             }
         }
-        if(login_result>0){
+        if (login_result > 0) {
             HttpSession session = request.getSession();
-            session.setAttribute("companyId",login_result);
+            session.setAttribute("companyId", login_result);
+            result.put("token", tokenService.generateToken(Role.Company, login_result));
         }
-        result.put("returnCode",String.valueOf(login_result));
-
+        result.put("returnCode", String.valueOf(login_result));
         return result;
     }
 
-    @RequestMapping(value = "/edit",method = RequestMethod.POST)
-    public Map edit(@RequestParam("name") String name, @RequestParam("price") Double price,@RequestParam("introduction") String introduction,@RequestParam("dishesId") int dishesId){
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    public Map edit(@RequestParam("name") String name, @RequestParam("price") Double price, @RequestParam("introduction") String introduction, @RequestParam("dishesId") int dishesId) {
         Map result = new HashMap();
-        Dishes dishes = new Dishes(name,price,introduction,dishesId);
+        Dishes dishes = new Dishes(name, price, introduction, dishesId);
         int edit_result = 0;
         edit_result = dishesMapper.updateByPrimaryKeySelective(dishes);
-        result.put("returnCode",String.valueOf(edit_result));
+        result.put("returnCode", String.valueOf(edit_result));
         return result;
     }
 
-    @RequestMapping(value = "/delete",method = RequestMethod.POST)
-    public Map delete(@RequestParam("dishesId") int dishesId){
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public Map delete(@RequestParam("dishesId") int dishesId) {
         Map result = new HashMap();
         int delete_result = 0;
         delete_result = dishesMapper.deleteByPrimaryKey(dishesId);
-        result.put("returnCode",String.valueOf(delete_result));
+        result.put("returnCode", String.valueOf(delete_result));
         return result;
     }
 
-    @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public Map add(@RequestParam("name") String name, @RequestParam("price") Double price,@RequestParam("introduction") String introduction){
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public Map add(@RequestParam("name") String name, @RequestParam("price") Double price, @RequestParam("introduction") String introduction) {
         Map result = new HashMap();
         Dishes dishes = new Dishes();
         dishes.setDishesName(name);
@@ -112,12 +112,9 @@ public class CompanyController extends APIBaseController {
         dishes.setDishesIntroduce(introduction);
         dishesMapper.insertSelective(dishes);
         int add_result = dishes.getDishesId();
-        result.put("returnCode",String.valueOf(add_result));
+        result.put("returnCode", String.valueOf(add_result));
         return result;
     }
-
-
-
 
 
     private TypeBean parse(Type type) {

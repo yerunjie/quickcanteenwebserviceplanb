@@ -8,19 +8,7 @@ To change this template use File | Settings | File Templates.
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Forms</title>
-
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/datepicker3.css" rel="stylesheet">
-    <link href="/css/styles.css" rel="stylesheet">
-
-    <!--[if lt IE 9]>
-    <script src="/js/html5shiv.js"></script>
-    <script src="/js/respond.min.js"></script>
-    <![endif]-->
-
+<#include "head.ftl"/>
 </head>
 
 <body>
@@ -53,13 +41,13 @@ To change this template use File | Settings | File Templates.
 
 
 
-<script src="/js/jquery-1.11.1.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
+<#include "third_party_file.ftl"/>
 <script src="/js/chart.min.js"></script>
 <script src="/js/chart-data.js"></script>
 <script src="/js/easypiechart.js"></script>
 <script src="/js/easypiechart-data.js"></script>
 <script src="/js/bootstrap-datepicker.js"></script>
+<script src="/js/jquery.cookie.js"></script>
 <script>
     !function ($) {
         $(document).on("click","ul.nav li.parent > a > span.icon", function(){
@@ -100,6 +88,8 @@ To change this template use File | Settings | File Templates.
                 }
                 else{
                     alert("登录成功");
+                    alert(data.token);
+                    $.cookie('X-TOKEN', data.token);
                     window.location.href="index";
                 }
             },
@@ -114,4 +104,4 @@ To change this template use File | Settings | File Templates.
 
 </body>
 
-</html>-0
+</html>
