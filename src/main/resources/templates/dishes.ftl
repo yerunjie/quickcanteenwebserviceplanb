@@ -339,8 +339,6 @@ To change this template use File | Settings | File Templates.
             error: function () {
                 alert("请求出错")
             }
-
-
         })
     }
 </script>
