@@ -143,16 +143,73 @@ To change this template use File | Settings | File Templates.
                         <p style="margin-left: 50px;margin-top: 30px">确认新密码<input id="new_pwd_again"
                                                                                   style="width:120px; height:30px; margin-left: 40px"
                                                                                   type="text"/></p>
+<<<<<<< HEAD
+                    </div>
+                </div>
+                <div class="modal-footer">
+                        <button class="btn btn-primary btn-md" type="button" onclick="editPassword();return false;">提交</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" style="width:800px ;height:900px " id="uploadPortrait" tabindex="-1"
+         role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" style="width:780px; " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">修改头像</h4>
+                </div>
+                <div class="modal-body" style="height: 400px">
+                    <div class="panel-body">
+                        <form id="uploadForm">
+                            <input type="file" id="file" name="file">
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary btn-md" type="button" onclick="fire_ajax_submit();return false;">提交</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" style="width:800px ;height:900px " id="uploadPortrait" tabindex="-1"
+         role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" style="width:780px; " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">修改头像</h4>
+                </div>
+                <div class="modal-body" style="height: 400px">
+                    <div class="panel-body">
+                        <form id="uploadForm">
+                            <input type="file" id="file" name="file">
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary btn-md" type="button" onclick="fire_ajax_submit();return false;">提交
+=======
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-primary btn-md" type="button" onclick="editPassword();return false;">提交
+>>>>>>> 619fe45d2ea0b05635e413c4b052cfd73355deae
                     </button>
                 </div>
 
             </div>
         </div>
     </div>
+<<<<<<< HEAD
+=======
     <div class="modal fade" style="width:800px ;height:900px " id="uploadPortrait" tabindex="-1"
          role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" style="width:780px; " role="document">
@@ -178,6 +235,7 @@ To change this template use File | Settings | File Templates.
             </div>
         </div>
     </div>
+>>>>>>> 619fe45d2ea0b05635e413c4b052cfd73355deae
 </div>    <!--/.main-->
 
 
@@ -232,10 +290,14 @@ To change this template use File | Settings | File Templates.
         var oldPwd = $("#old_pwd").val();
         var newPwd = $("#new_pwd").val();
         var newPwdAgain = $("#new_pwd_again").val();
+<<<<<<< HEAD
         if(oldPwd==""||newPwd==""||newPwdAgain==""){
             alert("密码不能为空");
         }
         else if (newPwd != newPwdAgain) {
+=======
+        if (newPwd != newPwdAgain) {
+>>>>>>> 619fe45d2ea0b05635e413c4b052cfd73355deae
             alert("两次密码输入不一致");
         }
         else if(newPwd.length<6||newPwd.length>18){
