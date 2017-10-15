@@ -76,24 +76,12 @@ To change this template use File | Settings | File Templates.
                             <td data-field="price" data-sortable="true">${dishes.price}</td>
                             <td data-field="picture" data-sortable="true">菜品图片</td>
                             <td data-field="modify" data-sortable="true">
-<<<<<<< HEAD
                                 <a data-toggle="modal" data-target="#myModal${dishes.dishesId}" title="编辑">
                                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                 </a>
                                 <a title="删除" style="margin-left: 40px" onclick="deletedishes(${dishes.dishesId});">
                                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                 </a>
-=======
-                                <a data-toggle="modal" data-target="#myModal${dishes.dishesId}" title="查看详情">
-                                    <span class="glyphicon glyphicon-align-justify"
-                                          aria-hidden="true"></span>
-                                </a>
-                                <a href="javascript:void " onclick="deletedishes(${dishes.dishesId})" title="下架">
-                                    <span class="glyphicon glyphicon-remove"
-                                          aria-hidden="true"></span>
-                                </a>
-                                </td>
->>>>>>> 619fe45d2ea0b05635e413c4b052cfd73355deae
                         </tr>
                         </#list>
                         </tbody>
