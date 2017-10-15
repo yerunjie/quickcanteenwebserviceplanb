@@ -73,10 +73,16 @@ To change this template use File | Settings | File Templates.
                                     href="detail?dishesId=${dishes.dishesId}">${dishes.dishesName}</a></td>
                             <td data-field="price" data-sortable="true">${dishes.price}</td>
                             <td data-field="picture" data-sortable="true">菜品图片</td>
-                            <td data-field="modify" data-sortable="true"><img src="/image/edit.svg" data-toggle="modal"
-                                                                              data-target="#myModal${dishes.dishesId}"><img
-                                    src="/image/close.svg" style="margin-left: 40px"
-                                    onclick="deletedishes(${dishes.dishesId});"></td>
+                            <td data-field="modify" data-sortable="true">
+                                <a data-toggle="modal" data-target="#myModal${dishes.dishesId}" title="查看详情">
+                                    <span class="glyphicon glyphicon-align-justify"
+                                          aria-hidden="true"></span>
+                                </a>
+                                <a href="javascript:void " onclick="deletedishes(${dishes.dishesId})" title="下架">
+                                    <span class="glyphicon glyphicon-remove"
+                                          aria-hidden="true"></span>
+                                </a>
+                                </td>
                         </tr>
                         </#list>
                         </tbody>
@@ -334,8 +340,6 @@ To change this template use File | Settings | File Templates.
             error: function () {
                 alert("请求出错")
             }
-
-
         })
     }
 </script>
