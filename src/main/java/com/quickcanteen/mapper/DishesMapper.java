@@ -115,7 +115,7 @@ public interface DishesMapper {
     @Select({
             "select dishes.* ",
             "from dishes ",
-            "where dishes_id in (select distinct(dishes_id) from `order` natural join order_dishes where user_id = 1)"
+            "where dishes_id in (select distinct(dishes_id) from `order` natural join order_dishes where user_id = #{userId})"
     })
     @ResultMap("BaseResultMap")
     List<Dishes> getDishesByUserId(int userId);
@@ -135,5 +135,13 @@ public interface DishesMapper {
     })
     @ResultMap("BaseResultMap")
     List<Dishes> getDishesByCompanyId(int companyId);
+
+    @Select({
+            "select * ",
+            "from dishes ",
+            "order by dishes.rating desc limit 0,#{count} "
+    })
+    @ResultMap("BaseResultMap")
+    List<Dishes> selectHighRatingDishesByCount(int count);
 
 }

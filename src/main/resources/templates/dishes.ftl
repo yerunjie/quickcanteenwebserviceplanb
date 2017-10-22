@@ -79,9 +79,16 @@ To change this template use File | Settings | File Templates.
                                 <a data-toggle="modal" data-target="#myModal${dishes.dishesId}" title="编辑">
                                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                 </a>
-                                <a title="删除" style="margin-left: 40px" onclick="deletedishes(${dishes.dishesId});">
-                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            <#if (dishes.available==1)>
+                                <a title="下架" style="margin-left: 40px" onclick="pullOffDishes(${dishes.dishesId});">
+                                    <span class="glyphicon glyphicon-download" aria-hidden="true"></span>
                                 </a>
+                            </#if>
+                            <#if (dishes.available==0)>
+                                <a title="上架" style="margin-left: 40px" onclick="putOnDishes(${dishes.dishesId});">
+                                    <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+                                </a>
+                            </#if>
                         </tr>
                         </#list>
                         </tbody>
@@ -253,11 +260,11 @@ To change this template use File | Settings | File Templates.
         })
     }
 
-    function deletedishes(dishesId) {
-        if (confirm('确定要执行此操作吗?')) {
+    function pullOffDishes(dishesId) {
+        if (confirm('确定要下架吗？')) {
             $.ajax({
                 type: "post",
-                url: "/api/company/delete",
+                url: "/api/company/pullOffDishes",
                 timeout: 8000,
                 dataType: "json",
                 data: {
@@ -265,22 +272,53 @@ To change this template use File | Settings | File Templates.
                 },
                 success: function (data) {
                     if (data.returnCode === "0") {
-                        alert("删除失败");
+                        alert("下架失败");
+                    }
+                    else if(data.returnCode==="-1"){
+                        alert("该菜品已经下架了╭( ′• o •′ )╭");
                     }
                     else {
-                        alert("删除成功");
-                        window.location.href = "tables";
+                        alert("下架成功");
+                        window.location.href = "dishes";
                     }
                 },
 
                 error: function () {
-                    alert("请求出错")
+                    alert("下架请求出错")
                 }
             })
         }
-
-
     }
+    function putOnDishes(dishesId) {
+        if (confirm('确定要上架吗？')) {
+            $.ajax({
+                type: "post",
+                url: "/api/company/putOnDishes",
+                timeout: 8000,
+                dataType: "json",
+                data: {
+                    "dishesId": dishesId
+                },
+                success: function (data) {
+                    if (data.returnCode === "0") {
+                        alert("上架失败");
+                    }
+                    else if(data.returnCode==="-1"){
+                        alert("该菜品已经上架了╭( ′• o •′ )╭");
+                    }
+                    else {
+                        alert("上架成功");
+                        window.location.href = "dishes";
+                    }
+                },
+
+                error: function () {
+                    alert("上架请求出错")
+                }
+            })
+        }
+    }
+
 
     function addDishes() {
 

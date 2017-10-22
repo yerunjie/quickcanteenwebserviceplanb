@@ -113,6 +113,36 @@ public class CompanyController extends APIBaseController {
         return result;
     }
 
+    @RequestMapping(value = "/pullOffDishes", method = RequestMethod.POST)
+    public Map pullOffDishes(@RequestParam("dishesId") int dishesId) {
+        Map result = new HashMap();
+        int pull_off_result = 0;
+        Dishes dishes = dishesMapper.selectByPrimaryKey(dishesId);
+        if(dishes.getAvailable()==1){
+            dishes.setAvailable(0);
+            pull_off_result = dishesMapper.updateByPrimaryKeyWithBLOBs(dishes);
+        }
+        else
+            pull_off_result = -1;
+        result.put("returnCode", String.valueOf(pull_off_result));
+        return result;
+    }
+
+    @RequestMapping(value = "/putOnDishes", method = RequestMethod.POST)
+    public Map putOnDishes(@RequestParam("dishesId") int dishesId) {
+        Map result = new HashMap();
+        int put_on_result = 0;
+        Dishes dishes = dishesMapper.selectByPrimaryKey(dishesId);
+        if(dishes.getAvailable()==0){
+            dishes.setAvailable(1);
+            put_on_result = dishesMapper.updateByPrimaryKeyWithBLOBs(dishes);
+        }
+        else
+            put_on_result =  -1;
+        result.put("returnCode", String.valueOf(put_on_result));
+        return result;
+    }
+
     @RequestMapping(value = "/editPassword", method = RequestMethod.POST)
     @Authentication(Role.Company)
     public Map editPassword(@RequestParam("oldPwd") String oldPwd, @RequestParam("newPwd") String newPwd) {
