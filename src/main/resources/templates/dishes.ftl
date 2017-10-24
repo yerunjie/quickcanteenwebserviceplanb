@@ -303,7 +303,7 @@ To change this template use File | Settings | File Templates.
                 }
                 else {
                     alert("修改成功");
-                    window.location.href = "tables";
+                    window.location.href = "dishes";
                 }
             },
 
@@ -380,7 +380,6 @@ To change this template use File | Settings | File Templates.
         var price = $("#price").val();
         var introduction = $("#introduction").val();
 
-
         $.ajax({
             type: "post",
             url: "/api/company/add",
@@ -392,18 +391,17 @@ To change this template use File | Settings | File Templates.
                 "introduction": introduction
             },
             success: function (data) {
-                alert(data.returnCode);
                 if (data.returnCode === "0") {
                     alert("添加失败");
                 }
                 else {
                     alert("添加成功");
-                    window.location.href = "tables";
+                    window.location.href = "dishes";
                 }
             },
 
             error: function () {
-                alert("请求出错")
+                alert("添加请求出错");
             }
         })
     }

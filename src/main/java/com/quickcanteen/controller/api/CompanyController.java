@@ -82,12 +82,16 @@ public class CompanyController extends APIBaseController {
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    @Authentication(Role.Company)
     public Map edit(@RequestParam("name") String name, @RequestParam("price") Double price, @RequestParam("introduction") String introduction, @RequestParam("dishesId") int dishesId) {
         Map result = new HashMap();
-        Dishes dishes = new Dishes(name, price, introduction, dishesId);
+        int companyId = getToken().getId();
+        Dishes dishes = new Dishes(name, price, introduction, dishesId,companyId);
         int edit_result = 0;
-        edit_result = dishesMapper.updateByPrimaryKeySelective(dishes);
-        result.put("returnCode", String.valueOf(edit_result));
+
+        dishesMapper.updateByPrimaryKeySelective(dishes);
+        edit_result = 1;
+                result.put("returnCode", String.valueOf(edit_result));
         return result;
     }
 
@@ -101,12 +105,15 @@ public class CompanyController extends APIBaseController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @Authentication(Role.Company)
     public Map add(@RequestParam("name") String name, @RequestParam("price") Double price, @RequestParam("introduction") String introduction) {
         Map result = new HashMap();
+        int companyId = getToken().getId();
         Dishes dishes = new Dishes();
         dishes.setDishesName(name);
         dishes.setPrice(price);
         dishes.setDishesIntroduce(introduction);
+        dishes.setCompanyId(companyId);
         dishesMapper.insertSelective(dishes);
         int add_result = dishes.getDishesId();
         result.put("returnCode", String.valueOf(add_result));

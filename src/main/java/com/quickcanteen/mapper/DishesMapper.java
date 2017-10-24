@@ -42,7 +42,7 @@ public interface DishesMapper {
     @ResultMap("ResultMapWithBLOBs")
     Dishes selectByPrimaryKey(Integer dishesId);
 
-    int updateByPrimaryKeySelective(Dishes record);
+    int  updateByPrimaryKeySelective(Dishes record);
 
     @Update({
         "update dishes",
