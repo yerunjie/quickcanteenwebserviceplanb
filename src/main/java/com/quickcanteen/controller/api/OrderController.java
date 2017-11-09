@@ -294,14 +294,9 @@ public class OrderController extends APIBaseController {
     public BaseJson getNeedDeliverOrdersByPage(@RequestParam("pageNumber") Integer pageNumber,
                                                @RequestParam("pageSize") Integer pageSize) {
         BaseJson baseJson = new BaseJson();
-        List<Order> orders = orderMapper.selectNeedDeliver(new RowBounds(pageNumber * pageSize, pageSize));
+        int userId = getToken().getId();
+        List<Order> orders = orderMapper.selectNeedDeliver(getToken().getId(),new RowBounds(pageNumber * pageSize, pageSize));
         List<OrderBean> orderBeans = orders.stream().map(this::parse).collect(Collectors.toList());
-        if(orderBeans!=null){
-            for(OrderBean orderBean:orderBeans){
-                if(orderBean.getUserId()==getToken().getId())
-                    orderBeans.remove(orderBean);
-            }
-        }
         switch (getToken().getRole()) {
             case User:
                 if (userInfoMapper.selectByPrimaryKey(getToken().getId()).getDeliver()) {
